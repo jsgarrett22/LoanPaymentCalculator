@@ -25,7 +25,7 @@ namespace LoanPaymentCalculator
                 ShowError(txtPurchasePrice, "Please enter a numeric purchase price.", "Invalid Data");
                 ResetField(txtPurchasePrice);
                 return;
-            } else if (purchasePrice < 0)
+            } else if (purchasePrice <= 0)
             {
                 ShowError(txtPurchasePrice, "Please enter a purchase price greater than 0.", "Invalid Data");
                 ResetField(txtPurchasePrice);
@@ -36,20 +36,14 @@ namespace LoanPaymentCalculator
             isValid = double.TryParse(txtDownPayment.Text, out double downPayment);
             if (!isValid)
             {
-                txtDownPayment.BackColor = Color.Salmon;
-                MessageBox.Show("Invalid Input.", "Invalid Data");
-                txtDownPayment.Text = "";
-                txtDownPayment.Focus();
-                txtDownPayment.BackColor = Color.White;
+                ShowError(txtDownPayment, "Please enter a numeric purchase price.", "Invalid Data");
+                ResetField(txtDownPayment);
                 return;
             }
-            else if (purchasePrice < 0)
+            else if (downPayment < 0)
             {
-                txtDownPayment.BackColor = Color.Salmon;
-                MessageBox.Show("Purchase price must be more than zero.", "Invalid Data");
-                txtDownPayment.Text = "";
-                txtDownPayment.Focus();
-                txtDownPayment.BackColor = Color.White;
+                ShowError(txtDownPayment, "Please enter a down payment greater than 0.", "Invalid Data");
+                ResetField(txtDownPayment);
                 return;
             }
 
@@ -57,20 +51,14 @@ namespace LoanPaymentCalculator
             isValid = double.TryParse(txtInterestRate.Text, out double interestRate);
             if (!isValid)
             {
-                txtInterestRate.BackColor = Color.Salmon;
-                MessageBox.Show("Invalid Input.", "Invalid Data");
-                txtInterestRate.Text = "";
-                txtInterestRate.Focus();
-                txtInterestRate.BackColor = Color.White;
+                ShowError(txtInterestRate, "Please enter a numeric interest rate.", "Invalid Data");
+                ResetField(txtInterestRate);
                 return;
             }
-            else if (purchasePrice < 0)
+            else if (interestRate <= 0)
             {
-                txtInterestRate.BackColor = Color.Salmon;
-                MessageBox.Show("Purchase price must be more than zero.", "Invalid Data");
-                txtInterestRate.Text = "";
-                txtInterestRate.Focus();
-                txtInterestRate.BackColor = Color.White;
+                ShowError(txtInterestRate, "Please enter an interest rate greater than 0.0.", "Invalid Data");
+                ResetField(txtInterestRate);
                 return;
             }
 
@@ -78,20 +66,14 @@ namespace LoanPaymentCalculator
             isValid = int.TryParse(txtLoanTerm.Text, out int loanTerm);
             if (!isValid)
             {
-                txtLoanTerm.BackColor = Color.Salmon;
-                MessageBox.Show("Invalid Input.", "Invalid Data");
-                txtLoanTerm.Text = "";
-                txtLoanTerm.Focus();
-                txtLoanTerm.BackColor = Color.White;
+                ShowError(txtLoanTerm, "Please enter a numeric loan term.", "Invalid Data");
+                ResetField(txtLoanTerm);
                 return;
             }
-            else if (purchasePrice < 0)
+            else if (loanTerm <= 0)
             {
-                txtLoanTerm.BackColor = Color.Salmon;
-                MessageBox.Show("Purchase price must be more than zero.", "Invalid Data");
-                txtLoanTerm.Text = "";
-                txtLoanTerm.Focus();
-                txtLoanTerm.BackColor = Color.White;
+                ShowError(txtLoanTerm, "Please enter a loan term greater than at least 1 month.", "Invalid Data");
+                ResetField(txtLoanTerm);
                 return;
             }
 
